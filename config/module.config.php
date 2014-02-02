@@ -8,6 +8,14 @@ return array(
         ),
     ),
     
+    'service_manager' => array(
+        //other service registration here...
+        'abstract_factories' => array(
+            'Zend\Form\FormAbstractServiceFactory',
+        ),
+        //other service registration here...
+    ),
+    
     /*'forms' => array(
         'SampleForm' => array(
             'hydrator' => 'ObjectProperty',
