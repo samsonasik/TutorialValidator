@@ -52,6 +52,12 @@ return array(
             ),
         ),
     ),*/
+    
+    'form_elements' => array(
+        'invokables' => array(
+            'SampleForm' => 'TutorialValidator\Form\SampleForm'
+        ),                         
+    ),
 
     'controllers' => array(
          'invokables' => array(
