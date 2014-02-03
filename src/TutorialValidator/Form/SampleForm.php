@@ -3,18 +3,12 @@
 namespace TutorialValidator\Form;
 
 use Zend\Form\Form;
-use Zend\Validator\ValidatorChain;
-use Zend\Validator\ValidatorPluginManager;
+use Zend\InputFilter\InputFilterProviderInterface;
 
-class SampleForm extends Form
+class SampleForm extends Form implements InputFilterProviderInterface
 {
-    protected $validatorManager;
-    
-    public function __construct(ValidatorPluginManager $validatorManager)
+    public function init()
     {
-        parent::__construct();
-        $this->validatorManager = $validatorManager;
-
         $this->add(array(
             'name' => 'sampleinput',
             'type' => 'Text',
@@ -22,7 +16,7 @@ class SampleForm extends Form
                 'label' => 'Sample Input: ',
             ),
         ));
-        
+
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(
@@ -31,30 +25,18 @@ class SampleForm extends Form
                 'id' => 'submitbutton',
             ),
         ));
-        
-        $this->setInputFilter($this->createInputValidation());
     }
-    
-    public function createInputValidation()
-    {
-        $inputFilter = $this->getInputFilter();
-        
-        $validatorChain = new ValidatorChain();
-        $validatorChain->setPluginManager($this->validatorManager);
 
-        $inputFilter->getFactory()
-             ->setDefaultValidatorChain($validatorChain);
-        
-        $inputFilter->add(array(
-            'name'     => 'sampleinput',
-            'required' => true,
-            'validators' => array(
-                array(
-                    'name' => 'Special'
-                )
+    public function getInputFilterSpecification()
+    {
+        return array(
+            array(
+                'name' => 'sampleinput',
+                'required' => true,
+                'validators' => array(
+                    array('name' => 'Special'),
+                ),
             ),
-        ));
-        
-        return $inputFilter;
+        );
     }
 }
