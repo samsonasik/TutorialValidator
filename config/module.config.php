@@ -1,13 +1,13 @@
 <?php
 
 return array(
-    
+
     'validators' => array(
         'invokables' => array(
-            'Special' => 'TutorialValidator\Validator\Special'  
+            'Special' => 'TutorialValidator\Validator\Special'
         ),
     ),
-    
+
     'service_manager' => array(
         //other service registration here...
         'abstract_factories' => array(
@@ -15,7 +15,7 @@ return array(
         ),
         //other service registration here...
     ),
-    
+
     /*'forms' => array(
         'SampleForm' => array(
             'hydrator' => 'ObjectProperty',
@@ -52,19 +52,13 @@ return array(
             ),
         ),
     ),*/
-     
-    'form_elements' => array(
-        'factories' => array(
-            'SampleForm' => 'TutorialValidator\Factory\Form\SampleFormFactory'
-        ),                         
-    ),
-    
+
     'controllers' => array(
          'invokables' => array(
              'TutorialValidator\Controller\TutorialValidator' => 'TutorialValidator\Controller\TutorialValidatorController',
          ),
      ),
-    
+
     'router' => array(
         'routes' => array(
             'tutorialvalidator' => array(
@@ -82,7 +76,7 @@ return array(
             ),
         ),
     ),
-    
+
     'view_manager' => array(
         'template_path_stack' => array(
             'tutorialvalidator' => __DIR__ . '/../view',
