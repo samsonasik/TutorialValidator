@@ -65,7 +65,7 @@ return array(
 
     'controllers' => array(
          'factories' => array(
-            Controller\TutorialValidator::class => InvokableFactory::class,
+            Controller\TutorialValidatorController::class => Controller\TutorialValidatorControllerFactory::class,
          ),
      ),
 
@@ -79,7 +79,7 @@ return array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                     'defaults' => array(
-                        'controller' => 'TutorialValidator\Controller\TutorialValidator',
+                        'controller' => 'TutorialValidator\Controller\TutorialValidatorController',
                         'action'     => 'index',
                     ),
                 ),
