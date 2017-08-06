@@ -7,21 +7,26 @@ use Zend\View\Model\ViewModel;
 
 class TutorialValidatorController extends AbstractActionController
 {
+    private $form;
+
+    public function __construct(\TutorialValidator\Form\SampleForm $form)
+    {
+        $this->form = $form;
+    }
+
     public function indexAction()
     {
-        $form = $this->getServiceLocator()->get('FormElementManager')->get('SampleForm');
-        
         $request = $this->getRequest();
         if ($request->isPost()) {
-            $form->setData($request->getPost());
-            if ($form->isValid()) {
+            $this->form->setData($request->getPost());
+            if ($this->form->isValid()) {
                 echo 'Great!form is valid';
             }
         }
-        
+
         $viewmodel = new ViewModel;
-        $viewmodel->setVariable('form', $form);
-        
+        $viewmodel->setVariable('form', $this->form);
+
         return $viewmodel;
     }
 }

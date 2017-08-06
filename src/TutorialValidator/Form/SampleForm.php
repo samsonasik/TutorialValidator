@@ -3,6 +3,7 @@
 namespace TutorialValidator\Form;
 
 use Zend\Form\Form;
+use TutorialValidator\Validator;
 use Zend\InputFilter\InputFilterProviderInterface;
 
 class SampleForm extends Form implements InputFilterProviderInterface
@@ -34,7 +35,7 @@ class SampleForm extends Form implements InputFilterProviderInterface
                 'name' => 'sampleinput',
                 'required' => true,
                 'validators' => array(
-                    array('name' => 'Special'),
+                    array('name' => Validator\Special::class),
                 ),
             ),
         );

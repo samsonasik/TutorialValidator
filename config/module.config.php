@@ -1,10 +1,14 @@
 <?php
 
+namespace TutorialValidator;
+
+use Zend\ServiceManager\Factory\InvokableFactory;
+
 return array(
 
     'validators' => array(
-        'invokables' => array(
-            'Special' => 'TutorialValidator\Validator\Special'
+        'factories' => array(
+            Validator\Special::class => InvokableFactory::class,
         ),
     ),
 
@@ -52,16 +56,16 @@ return array(
             ),
         ),
     ),*/
-    
+
     'form_elements' => array(
-        'invokables' => array(
-            'SampleForm' => 'TutorialValidator\Form\SampleForm'
-        ),                         
+        'factories' => array(
+            'TutorialValidator\Form\SampleForm' => InvokableFactory::class,
+        ),
     ),
 
     'controllers' => array(
-         'invokables' => array(
-             'TutorialValidator\Controller\TutorialValidator' => 'TutorialValidator\Controller\TutorialValidatorController',
+         'factories' => array(
+            Controller\TutorialValidator::class => InvokableFactory::class,
          ),
      ),
 
